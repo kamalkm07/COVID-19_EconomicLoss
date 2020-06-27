@@ -1,2 +1,6 @@
 # COVID-19_EconomicLoss
 This repository covers information regarding data and codes used in the paper titled "Who compensates? An assessment of loss and vulnerability to household economy in India due to COVID-19 lockdown" by Paul et al.
+There are three files in the repository. The description of individual files is as:
+The text file "CODING_PLFS.txt" conntains a set of instruction of downloading and processing the PLFS data. 
+The R file "Figure 1.R" contains information on getting necessary data and processing the data to create Figure 1 of the paper. 
+The R file "Figure 2.R" contains infromation on creation of Figure 2
