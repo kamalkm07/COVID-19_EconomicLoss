@@ -1,0 +1,290 @@
+#### This file is created by Dr. Bino Paul. This contains set of instructoion of extracting and processing the PLFS data
+  
+1.  Extraction of the Data
+
+  We obtained the unit records of The Periodic Labour Force Survey 2017-2018 (published in May 2019) from 
+  the wbelink http://www.mospi.gov.in/sites/default/files/README.pdf.
+
+  We downloaded the data on household from the source 'http://www.mospi.gov.in/sites/default/files/FHH_FV.TXT', and the data on members of household from the source
+  'http://www.mospi.gov.in/sites/default/files/FPER_FV.TXT'. 
+
+  Filenmes for houseld and  members of household data are FHH_FV.TXT and FPER_FV.TXT, respectively.   
+  
+  To understand the layout of data that consists of variable label and bytes, we followed the schema given in the 
+  spreasheet (Data_LayoutPLFS.XLS). This spreadsheet is available from  the weblink of the survey.
+
+  To convert the data from the .txt fromat to a statistical spreadsheet, we used the software Statistical Package for Social Sciences (IBM SPSS softare Version 22).
+
+  By appling the text import wizard of the software, we converted data in .txt format to .sav format. 
+
+  The following syntax outlines the extraction of household and members of household data.      
+
+ 1.1 Extraction of Household Data   
+
+  GET DATA  /TYPE=TXT
+  /FILE="E:\NSSO_PLFS_2019\FHH_FV.TXT"
+  /FIXCASE=1
+  /ARRANGEMENT=FIXED
+  /FIRSTCASE=1
+  /IMPORTCASE=ALL
+  /VARIABLES=
+  /1 FILEID 0-3 A4
+  SCHEDULE 4-6 F3.0
+  QUARTER 7-8 A2
+  VISIT 9-10 A2
+  SECTOR 11-11 F1.0
+  STATE 12-13 F2.0
+  DISTRICT 14-15 F2.0
+  NSSREG 16-18 F3.0
+  STRATUM 19-20 F2.0
+  SUBSTRATUM 21-22 F2.0
+  SUBSAMPLE 23-23 F1.0
+  FOD 24-27 F4.0
+  FSU 28-32 F5.0
+  HAMLET 33-33 F1.0
+  SECONDSTRA 34-34 F1.0
+  SAMPLEHH 35-36 F2.0
+  MONTH 37-38 F2.0
+  RESPONSE 39-39 F1.0
+  SURVEY  40-40 F1.0
+  REASON 41-41 F1.0
+  HHSIZE 42-43 F2.0
+  HHTYPE 44-44 F1.0
+  RELIGION 45-45 F1.0
+  SGROUP 46-46 F1.0
+  EXPEND 47-54 F8.0
+  INFORMSL 55-56 F2.0
+  DATE 57-64 F8.0
+  CANVASS 65-68 F4.0
+  NSS 69-71 F3.0
+  NSC 72-74 F3.0
+  MULT 75-84 F10.0
+  QTR  85-85 F1.0.
+  CACHE.
+  EXECUTE.
+  SAVE OUTFILE='E:\NSSO_PLFS_2019\HOUSEHOLD_PLFS_2018.sav' 
+  /COMPRESSED. 
+
+   
+1.2 Extraction of Members of Household Data   
+
+
+  GET DATA  /TYPE=TXT
+  /FILE="E:\NSSO_PLFS_2019\FPER_FV.TXT"
+  /FIXCASE=1
+  /ARRANGEMENT=FIXED
+  /FIRSTCASE=1
+  /IMPORTCASE=ALL
+  /VARIABLES=
+  /1 FILEID 0-3 A4
+  SCHEDULE 4-6 F3.0
+  QUARTER 7-8 A2
+  VISIT 9-10 A2
+  SECTOR 11-11 F1.0
+  STATE 12-13 F2.0
+  DISTRICT 14-15 F2.0
+  NSSREG 16-18 F3.0
+  STRATUM 19-20 F2.0
+  SUBSTRATUM 21-22 F2.0
+  SUBSAMPLE 23-23 F1.0
+  FOD 24-27 F4.0
+  FSU 28-32 F5.0
+  HAMLET 33-33 F1.0
+  SECONDSTRA 34-34 F1.0
+  SAMPLEHH 35-36 F2.0
+  PERSSL  37-38 F2.0
+  RELATION 39-39 F1.0
+  SEX 40-40 F1.0
+  AGE 41-43 F3.0
+  MARITAL 44-44 F1.0
+  GENEDU 45-46 F2.0
+  TECHEDU 47-48 F2.0
+  EDUYEARS 49-50 F2.0
+  CURRENTAT 51-52 F2.0 
+  VOCEDU 53-53 F1.0
+  TRAINING_365 54-54 F1.0
+  FIELD_TR 55-56 F2.0
+  DUR_TRAIN 57-57 F1.0
+  TYPE_TRAIN 58-58 F1.0
+  TRAIN_FUND 59-59 F1.0
+  PRINAC 60-61 F2.0
+  NIC 62-66 F5.0
+  NCO 67-69 F3.0
+  SUB 70-70 F1.0
+  LOCATION 71-72 F2.0
+  ENTERPRISE 73-74 F2.0
+  NWORKERS 75-75 F1.0
+  CONTRACT 76-76 F1.0
+  LEAVE 77-77 F1.0
+  SSBEN 78-78 F1.0 
+  SUBNAC 79-80 F2.0
+  SUBNIC 81-85 F5.0
+  SUBNCO 86-88 F3.0
+  SUBLOCATION 89-90 F2.0
+  SUBENTERPRISE 91-92 F2.0
+  SUBNWORKERS 93-93 F1.0
+  SUBCONTRACT 94-94 F1.0
+  SUBLEAVE 95-95 F1.0
+  SUBSSBEN 96-96 F1.0 
+  ACT1_7 97-98 F2.0
+  NICACT1_7 99-100 F2.0
+  HOURSACT1_7 101-102 F2.0
+  WAGEACT1_7 103-107 F5.0
+  ACT2_7 108-109 F2.0
+  NICACT2_7 110-111 F2.0
+  HOURSACT2_7 112-113 F2.0
+  WAGEACT2_7 114-118 F5.0
+  TOTHRS_7  119-120 F2.0
+  HRS_ADD_7 121-122 F2.0
+  ACT1_6 123-124 F2.0
+  NICACT1_6 125-126 F2.0
+  HOURSACT1_6 127-128 F2.0
+  WAGEACT1_6 129-133 F5.0
+  ACT2_6 134-135 F2.0
+  NICACT2_6 136-137 F2.0
+  HOURSACT2_6 138-139 F2.0
+  WAGEACT2_6 140-144 F5.0
+  TOTHRS_6  145-146 F2.0
+  HRS_ADD_6 147-148 F2.0
+  ACT1_5 149-150 F2.0
+  NICACT1_5 151-152 F2.0
+  HOURSACT1_5 153-154 F2.0
+  WAGEACT1_5 155-159 F5.0
+  ACT2_5 160-161 F2.0
+  NICACT2_5 162-163 F2.0
+  HOURSACT2_5 164-165 F2.0
+  WAGEACT2_5 166-170 F5.0
+  TOTHRS_5 171-172 F2.0
+  HRS_ADD_5 173-174 F2.0
+  ACT1_4 175-176 F2.0
+  NICACT1_4 177-178 F2.0
+  HOURSACT1_4 179-180 F2.0
+  WAGEACT1_4 181-185 F5.0
+  ACT2_4 186-187 F2.0
+  NICACT2_4 188-189 F2.0
+  HOURSACT2_4 190-191 F2.0
+  WAGEACT2_4 192-196 F5.0
+  TOTHRS_4 197-198 F2.0
+  HRS_ADD_4 199-200 F2.0
+  ACT1_3 201-202 F2.0
+  NICACT1_3 203-204 F2.0
+  HOURSACT1_3 205-206 F2.0
+  WAGEACT1_3 207-211 F5.0
+  ACT2_3 212-213 F2.0
+  NICACT2_3 214-215 F2.0
+  HOURSACT2_3 216-217 F2.0
+  WAGEACT2_3 218-222 F5.0
+  TOTHRS_3 223-224 F2.0
+  HRS_ADD_3 225-226 F2.0
+  ACT1_2 227-228 F2.0
+  NICACT1_2 229-230 F2.0
+  HOURSACT1_2 231-232 F2.0
+  WAGEACT1_2 233-237 F5.0
+  ACT2_2 238-239 F2.0
+  NICACT2_2 240-241 F2.0
+  HOURSACT2_2 242-243 F2.0
+  WAGEACT2_2 244-248 F5.0
+  TOTHRS_2 249-250 F2.0
+  HRS_ADD_2 251-252 F2.0
+  ACT1_1 253-254 F2.0
+  NICACT1_1 255-256 F2.0
+  HOURSACT1_1 257-258 F2.0
+  WAGEACT1_1 259-263 F5.0
+  ACT2_1 264-265 F2.0
+  NICACT2_1 266-267 F2.0
+  HOURSACT2_1 268-269 F2.0
+  WAGEACT2_1 270-274 F5.0
+  TOTHRS_1 275-276 F2.0
+  HRS_ADD_1 277-278 F2.0
+  CWS 279-280 F2.0
+  INDUSTRY_CWS 281-282 F2.0
+  OCCUPATION_CWS 283-285 F3.0
+  WAGE 286-293 F8.0    
+  EARNING 294-301 F8.0
+  NSS 302-304 F3.0
+  NSC 305-307 F3.0
+  MULT 308-317 F10.0
+  QTR 318-318 F1.0.
+  CACHE.
+  EXECUTE.
+  SAVE OUTFILE='E:\NSSO_PLFS_2019\PERSON_PLFS_2018.sav' 
+  /COMPRESSED.
+
+
+2 Sorting of Data
+
+  These two datasets were merged to form one file by using unique key applicable to both these sets. Since there was no unique key identifier, 
+  complying with the instructions given in the weblink, we sorted both the the datasets with respect to six primary keys -QUARTER, VISIT, FSU, HAMLET,
+   SECONDSTRA, and SAMPLEHH- on an ascending order. This process is equivalent to having a unique key 
+
+  The syntax of sorting process is as follows:        
+
+
+  2.1 Sorting of Household Data  
+   
+  GET 
+  FILE='E:\NSSO_PLFS_2019\HOUSEHOLD_PLFS_2018.sav'. 
+  DATASET NAME DataSet5 WINDOW=FRONT. 
+  SORT CASES BY QUARTER(A) VISIT(A) FSU(A) HAMLET(A) SECONDSTRA(A) SAMPLEHH(A) 
+  /OUTFILE='E:\NSSO_PLFS_2019\HOUSEHOLD_PLFS_2018.sav'. 
+
+
+ 2.2 Sorting of Memebers of Household Data
+
+  GET 
+  FILE='E:\NSSO_PLFS_2019\PERSON_PLFS_2018.sav'. 
+  DATASET NAME DataSet6 WINDOW=FRONT.  
+  SORT CASES BY QUARTER(A) VISIT(A) FSU(A) HAMLET(A) SECONDSTRA(A) SAMPLEHH(A) 
+  /OUTFILE='E:\NSSO_PLFS_2019\PERSON_PLFS_2018.sav'. 
+
+3 Merging of Data
+
+
+  After the sorting, we applied the merging variable command of the software to both the files. 
+
+  In the merging, household data is the host file with that members of household data is merged with. 
+
+  The synatx of the file merging is below:   
+  
+
+DATASET ACTIVATE DataSet5. 
+STAR JOIN 
+/SELECT t1.FILEID, t1.SCHEDULE, t1.SECTOR, t1.STATE, t1.DISTRICT, t1.NSSREG, t1.STRATUM, t1.SUBSTRATUM, 
+t1.SUBSAMPLE, t1.FOD, t1.MONTH, t1.RESPONSE, t1.SURVEY, t1.REASON, t1.HHSIZE, t1.HHTYPE, t1.RELIGION, 
+t1.SGROUP, t1.EXPEND, t1.INFORMSL, t1.DATE, t1.CANVASS, t1.NSS, t1.NSC, t1.MULT, t1.QTR, t0.PERSSL, 
+t0.RELATION, t0.SEX, t0.AGE, t0.MARITAL, t0.GENEDU, t0.TECHEDU, t0.EDUYEARS, t0.CURRENTAT, 
+t0.VOCEDU, t0.TRAINING_365, t0.FIELD_TR, t0.DUR_TRAIN, t0.TYPE_TRAIN, t0.TRAIN_FUND, t0.PRINAC, t0.NIC, t0.NCO, 
+t0.SUB, t0.LOCATION, t0.ENTERPRISE, t0.NWORKERS, t0.CONTRACT, t0.LEAVE, t0.SSBEN, t0.SUBNAC, t0.SUBNIC, t0.SUBNCO, 
+t0.SUBLOCATION, t0.SUBENTERPRISE, t0.SUBNWORKERS, t0.SUBCONTRACT, t0.SUBLEAVE, t0.SUBSSBEN, t0.ACT1_7, t0.NICACT1_7, 
+t0.HOURSACT1_7, t0.WAGEACT1_7, t0.ACT2_7, t0.NICACT2_7, t0.HOURSACT2_7, t0.WAGEACT2_7, t0.TOTHRS_7, t0.HRS_ADD_7, 
+t0.ACT1_6, t0.NICACT1_6, t0.HOURSACT1_6, t0.WAGEACT1_6, t0.ACT2_6, t0.NICACT2_6, t0.HOURSACT2_6, t0.WAGEACT2_6, t0.TOTHRS_6, t0.HRS_ADD_6,
+t0.ACT1_5, t0.NICACT1_5, t0.HOURSACT1_5, t0.WAGEACT1_5, t0.ACT2_5, t0.NICACT2_5, t0.HOURSACT2_5, t0.WAGEACT2_5, t0.TOTHRS_5, t0.HRS_ADD_5, 
+t0.ACT1_4, t0.NICACT1_4, t0.HOURSACT1_4, t0.WAGEACT1_4, t0.ACT2_4, t0.NICACT2_4, t0.HOURSACT2_4, t0.WAGEACT2_4, t0.TOTHRS_4, t0.HRS_ADD_4, 
+t0.ACT1_3, t0.NICACT1_3, t0.HOURSACT1_3, t0.WAGEACT1_3, t0.ACT2_3, t0.NICACT2_3, t0.HOURSACT2_3, t0.WAGEACT2_3, t0.TOTHRS_3, t0.HRS_ADD_3,
+ t0.ACT1_2, t0.NICACT1_2, t0.HOURSACT1_2, t0.WAGEACT1_2, t0.ACT2_2, t0.NICACT2_2, t0.HOURSACT2_2, t0.WAGEACT2_2, 
+t0.TOTHRS_2, t0.HRS_ADD_2, t0.ACT1_1, t0.NICACT1_1, t0.HOURSACT1_1, t0.WAGEACT1_1, t0.ACT2_1, t0.NICACT2_1, t0.HOURSACT2_1, t0.WAGEACT2_1, 
+t0.TOTHRS_1, t0.HRS_ADD_1, t0.CWS, t0.INDUSTRY_CWS, t0.OCCUPATION_CWS, t0.WAGE, t0.EARNING 
+  /FROM 'DataSet6' AS t0 
+  /JOIN * AS t1 
+    ON t0.QUARTER=t1.QUARTER 
+    AND t0.VISIT=t1.VISIT AND t0.FSU=t1.FSU AND t0.HAMLET=t1.HAMLET AND t0.SECONDSTRA=t1.SECONDSTRA AND t0.SAMPLEHH=t1.SAMPLEHH  
+  /OUTFILE FILE=*.
+
+SAVE OUTFILE='E:\NSSO_PLFS_2019\HOUSEHOLD_PERSON_MERGED_2018.sav' 
+  /COMPRESSED
+
+
+4  Generation of Population from Sample 
+
+   To generate population from sample estimates, we computed weights by following the instruction given in the weblink. 
+   Therafter, we weighted the merged database with the computed weight. 
+   
+   The syntax is below:      
+
+
+  if (NSC ~= NSS) weight=(MULT/200)/4.
+  if (NSC eq NSS ) weight =(MULT/100)/4.
+  fre weight.
+
+
+###################################################--------End---------################################################################ 
